@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderEmailConsumer {
 
-    @RabbitListener(queues = "order-confirmation-queue")
+    @RabbitListener(queues = "order-queue")
     public void receiveMessage(String message) {
 
         System.out.println(message);
