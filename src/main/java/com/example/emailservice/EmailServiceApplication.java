@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 @EnableRabbit
-@SpringBootApplication
+@SpringBootApplication (scanBasePackages = {"com.example.emailservice" ,"se.iths.maryam.messenger"})
 public class EmailServiceApplication {
 
     public static void main(String[] args) {
