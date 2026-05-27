@@ -1,9 +1,10 @@
 package com.example.emailservice;
 
+import com.example.emailservice.dto.EmailOrderMessage;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 @RestController
 public class TestController {
@@ -13,7 +14,15 @@ public class TestController {
 
     @GetMapping("/send-test")
     public String sendTest() {
-        rabbitTemplate.convertAndSend("order-queue", "Hello from email-service!");
+
+        EmailOrderMessage message =
+                new EmailOrderMessage(
+                        "maryamselemankhil786@gmail.com",
+                        "Your order was successful!"
+                );
+
+        rabbitTemplate.convertAndSend("order-queue", message);
+
         return "Message sent!";
     }
 }
