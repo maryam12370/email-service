@@ -3,7 +3,7 @@ name: Build and Publish
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -22,16 +22,18 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
+          cache: maven
           server-id: github
-          server-username: GITHUB_ACTOR
+          server-username: MAVEN_GITHUB_USERNAME
           server-password: MAVEN_GITHUB_TOKEN
 
       - name: Build Maven Package
         run: mvn clean package -DskipTests
         env:
           MAVEN_GITHUB_TOKEN: ${{ secrets.MAVEN_GITHUB_TOKEN }}
+          MAVEN_GITHUB_USERNAME: maryam12370
 
-      - name: Set up Docker Buildx
+      - name: Set up Docker Builds
         uses: docker/setup-buildx-action@v3
 
       - name: Login to Docker Hub
@@ -42,8 +44,8 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t DOCKERHUB_USERNAME/IMAGE_NAME:latest .
+          docker build -t maryam12370/email-service:latest .
 
       - name: Push Docker Image
         run: |
-          docker push DOCKERHUB_USERNAME/IMAGE_NAME:latest
+          docker push maryam12370/email-service:latest
