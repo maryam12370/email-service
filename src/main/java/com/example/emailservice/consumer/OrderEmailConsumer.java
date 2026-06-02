@@ -22,6 +22,7 @@ public class OrderEmailConsumer {
         System.out.println(message.getItems());
         System.out.println(message.getCustomerName());
 
+
 //        emailService.sendEmail(
 //                message.getEmail(),
 //                message.getMessage()
