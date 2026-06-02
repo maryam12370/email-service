@@ -19,7 +19,7 @@ public class OrderEmailConsumer {
     public void receiveMessage(OrderItemMessage message) {
 
         System.out.println("Received message from RabbitMQ");
-        System.out.println(message.getItem());
+        System.out.println(message.getItems());
         System.out.println(message.getCustomerName());
 
 //        emailService.sendEmail(
