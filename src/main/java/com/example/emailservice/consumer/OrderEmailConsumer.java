@@ -18,10 +18,12 @@ public class OrderEmailConsumer {
     public void receiveMessage(EmailOrderMessage message) {
 
         System.out.println("Received message from RabbitMQ");
+        System.out.println(message.getMessage());
+        System.out.println(message.getEmail());
 
-        emailService.sendEmail(
-                message.getEmail(),
-                message.getMessage()
-        );
+//        emailService.sendEmail(
+//                message.getEmail(),
+//                message.getMessage()
+//        );
     }
 }
