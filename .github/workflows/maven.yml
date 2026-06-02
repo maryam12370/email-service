@@ -44,8 +44,8 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t maryam12370/email-service:latest .
+          docker build -t maryam12370/email-service:1.0.0 .
 
       - name: Push Docker Image
         run: |
-          docker push maryam12370/email-service:latest
+          docker push maryam12370/email-service:1.0.0
